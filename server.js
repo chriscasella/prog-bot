@@ -73,5 +73,7 @@ let sortArtists = (artists) => {
     savedArtists = [];
     for(artist of artists){
         savedArtists.push(artist.name);
+        console.log(artist)
     };
+    console.log(savedArtists);
 };
