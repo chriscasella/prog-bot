@@ -1,0 +1,108 @@
+{
+    "similarartists": {
+        "artist": [
+            {
+                "name": "Kylie Minogue",
+                "mbid": "2fddb92d-24b2-46a5-bf28-3aed46f4684c",
+                "match": "1",
+                "url": "https://www.last.fm/music/Kylie+Minogue",
+                "image": [
+                    {
+                        "#text": "https://lastfm-img2.akamaized.net/i/u/34s/873f8d6c55ab14182d66f79a32f34aba.png",
+                        "size": "small"
+                    },
+                    {
+                        "#text": "https://lastfm-img2.akamaized.net/i/u/64s/873f8d6c55ab14182d66f79a32f34aba.png",
+                        "size": "medium"
+                    },
+                    {
+                        "#text": "https://lastfm-img2.akamaized.net/i/u/174s/873f8d6c55ab14182d66f79a32f34aba.png",
+                        "size": "large"
+                    },
+                    {
+                        "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/873f8d6c55ab14182d66f79a32f34aba.png",
+                        "size": "extralarge"
+                    },
+                    {
+                        "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/873f8d6c55ab14182d66f79a32f34aba.png",
+                        "size": "mega"
+                    },
+                    {
+                        "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/873f8d6c55ab14182d66f79a32f34aba.png",
+                        "size": ""
+                    }
+                ],
+                "streamable": "0"
+            },
+            {
+                "name": "Madonna",
+                "mbid": "79239441-bfd5-4981-a70c-55c3f15c1287",
+                "match": "0.967691",
+                "url": "https://www.last.fm/music/Madonna",
+                "image": [
+                    {
+                        "#text": "https://lastfm-img2.akamaized.net/i/u/34s/8a97e2b475a48e9b72398167fd5c7642.png",
+                        "size": "small"
+                    },
+                    {
+                        "#text": "https://lastfm-img2.akamaized.net/i/u/64s/8a97e2b475a48e9b72398167fd5c7642.png",
+                        "size": "medium"
+                    },
+                    {
+                        "#text": "https://lastfm-img2.akamaized.net/i/u/174s/8a97e2b475a48e9b72398167fd5c7642.png",
+                        "size": "large"
+                    },
+                    {
+                        "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/8a97e2b475a48e9b72398167fd5c7642.png",
+                        "size": "extralarge"
+                    },
+                    {
+                        "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/8a97e2b475a48e9b72398167fd5c7642.png",
+                        "size": "mega"
+                    },
+                    {
+                        "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/8a97e2b475a48e9b72398167fd5c7642.png",
+                        "size": ""
+                    }
+                ],
+                "streamable": "0"
+            },
+            {
+                "name": "Sonny & Cher",
+                "mbid": "c43d2302-02db-487b-b62d-8cb3c57f94c6",
+                "match": "0.967319",
+                "url": "https://www.last.fm/music/Sonny+&+Cher",
+                "image": [
+                    {
+                        "#text": "https://lastfm-img2.akamaized.net/i/u/34s/9ff63c8eab254477a3bc4874b75772d4.png",
+                        "size": "small"
+                    },
+                    {
+                        "#text": "https://lastfm-img2.akamaized.net/i/u/64s/9ff63c8eab254477a3bc4874b75772d4.png",
+                        "size": "medium"
+                    },
+                    {
+                        "#text": "https://lastfm-img2.akamaized.net/i/u/174s/9ff63c8eab254477a3bc4874b75772d4.png",
+                        "size": "large"
+                    },
+                    {
+                        "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/9ff63c8eab254477a3bc4874b75772d4.png",
+                        "size": "extralarge"
+                    },
+                    {
+                        "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/9ff63c8eab254477a3bc4874b75772d4.png",
+                        "size": "mega"
+                    },
+                    {
+                        "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/9ff63c8eab254477a3bc4874b75772d4.png",
+                        "size": ""
+                    }
+                ],
+                "streamable": "0"
+            }
+        ],
+        "@attr": {
+            "artist": "Cher"
+        }
+    }
+}

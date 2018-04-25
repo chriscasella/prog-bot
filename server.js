@@ -2,6 +2,12 @@ require('dotenv').config();
 
 const Snoowrap = require('snoowrap');
 const Snoostorm = require('snoostorm');
+const axios = require('axios');
+
+//environment variables
+const lastApi = process.env.LAST_API;
+const lastSecret = process.env.LAST_SECRET;
+
 
 const r = new Snoowrap({
     userAgent: 'prog-bot',
@@ -41,14 +47,31 @@ comments.on('comment', (comment)=>{
 
 submissions.on('submission', (submission)=>{
     console.log(submission);
-})
+    isSong(submission);
+});
+
+//global variables
+let savedArtists = [];
 
 let isSong = (submission) => {
     let title = submission.title;
     let split = title.split(' ');
-    split[1] == '-' ? search : ''//nothing   
+    split[1] == '-' ? search(split[0]) : ''//nothing   
 };
 
-let search = () => {
+let search = (artist) => {
+    axios.get('http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist='+ artist +'&api_key='+ lastApi +'&format=json&limit=3')
+    .then((res)=>{
+        console.log(res);
+        sortArtists(res.similarartists.artist);
+    }).catch((err)=>{
+        console.log('last fm search error:', err);
+    });
+};
 
+let sortArtists = (artists) => {
+    savedArtists = [];
+    for(artist of artists){
+        savedArtists.push(artist.name);
+    };
 };
