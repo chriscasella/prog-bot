@@ -42,3 +42,9 @@ comments.on('comment', (comment)=>{
 submissions.on('submission', (submission)=>{
     console.log(submission);
 })
+
+let isSong = function (submission){
+    if(submission){
+
+    };
+};
