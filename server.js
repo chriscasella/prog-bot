@@ -43,8 +43,12 @@ submissions.on('submission', (submission)=>{
     console.log(submission);
 })
 
-let isSong = function (submission){
-    if(submission){
+let isSong = (submission) => {
+    let title = submission.title;
+    let split = title.split(' ');
+    split[1] == '-' ? search : ''//nothing   
+};
 
-    };
+let search = () => {
+
 };
