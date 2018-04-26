@@ -53,6 +53,8 @@ submissions.on('submission', (submission)=>{
 
 //global variables
 let savedArtists = [];
+let commentPayload = [];
+let counter = 0;
 
 let isSong = (submission) => {
     let title = submission.title;
@@ -70,17 +72,37 @@ let searchSimilarArtists = (artist) => {
     });
 };
 
-let searchYouTube = (artist) => {
-
-};
-
 let sortArtists = (artists) => {
     savedArtists = [];
     for(artist of artists){
         savedArtists.push(artist.name);
         console.log(artist)
     };
-    console.log(savedArtists);
+    console.log('savedArtists:', savedArtists);
+    searchYouTube(savedArtists);
+};
+
+let searchYouTube = (artists) => {
+    const ytOpts = {
+        maxResults: 1,
+        key: process.env.YOUTUBE_API
+    };
+    for(i of artists){
+        youtubeSearch(i + ' band', ytOpts, (err, res)=>{
+            if(err) console.log(err);
+            console.log(res[0]); 
+            parseYtResponse(res[0]);
+        });
+    };
+};
+
+let parseYtResponse =(ytObj)=>{
+    let ytVidObj = {
+        link:ytObj.link,
+        artist: savedArtists[counter]
+    };
+    commentPayload.push(ytVidObj); 
+    counter++;
 };
 
 const testData = [
