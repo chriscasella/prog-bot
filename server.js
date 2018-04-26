@@ -3,6 +3,7 @@ require('dotenv').config();
 const Snoowrap = require('snoowrap');
 const Snoostorm = require('snoostorm');
 const axios = require('axios');
+const youtubeSearch = require('youtube-search');
 
 //environment variables
 const lastApi = process.env.LAST_API;
@@ -56,17 +57,21 @@ let savedArtists = [];
 let isSong = (submission) => {
     let title = submission.title;
     let split = title.split(' ');
-    split[1] == '-' ? search(split[0]) : ''//nothing   
+    split[1] == '-' ? searchSimilarArtists(split[0]) : ''//nothing   
 };
 
-let search = (artist) => {
+let searchSimilarArtists = (artist) => {
     axios.get('http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist='+ artist +'&api_key='+ lastApi +'&format=json&limit=3')
     .then((res)=>{
         console.log(res);
-        sortArtists(res.similarartists.artist);
+        sortArtists(res.data.similarartists.artist);
     }).catch((err)=>{
         console.log('last fm search error:', err);
     });
+};
+
+let searchYouTube = (artist) => {
+
 };
 
 let sortArtists = (artists) => {
@@ -77,3 +82,17 @@ let sortArtists = (artists) => {
     };
     console.log(savedArtists);
 };
+
+const testData = [
+    {
+        name: "Textures"
+    },
+    {
+        name: "Gojira"
+    },
+    {
+        name: "Opeth"
+    }
+];
+
+sortArtists(testData);

@@ -20,6 +20,7 @@
     "axios": "^0.18.0",
     "dotenv": "^5.0.1",
     "snoostorm": "0.0.5",
-    "snoowrap": "^1.15.2"
+    "snoowrap": "^1.15.2",
+    "youtube-search": "^1.1.0"
   }
 }
