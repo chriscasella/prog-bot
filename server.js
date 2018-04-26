@@ -48,6 +48,7 @@ comments.on('comment', (comment)=>{
 
 submissions.on('submission', (submission)=>{
     console.log(submission);
+    currentSubmission = submission;
     isSong(submission);
 });
 
@@ -55,6 +56,7 @@ submissions.on('submission', (submission)=>{
 let savedArtists = [];
 let commentPayload = [];
 let counter = 0;
+let currentSubmission = null;
 
 let isSong = (submission) => {
     let title = submission.title;
@@ -103,6 +105,19 @@ let parseYtResponse =(ytObj)=>{
     };
     commentPayload.push(ytVidObj); 
     counter++;
+    counter == 3 ? (postComment(), counter = 0 ) : '';
+};
+
+let postComment = () =>{
+    let commentText = '**Here are some similar artists for this submission** &nbsp * [' + commentPayload[0].artist + '](' + commentPayload[0].link + ') &nbsp + [' + commentPayload[1].artist + '](' + commentPayload[1].link + ') &nbsp - [' + commentPayload[2].artist + '](' + commentPayload[2].link +') &nbsp *I am a bot, sent here to spread prog metal*' ;
+    currentSubmission.reply(commentText);
+    wipeVars();
+};
+
+let wipeVars = ()=>{
+    let savedArtists = [];
+    let commentPayload = [];
+    let currentSubmission = null;
 };
 
 const testData = [
@@ -117,4 +132,4 @@ const testData = [
     }
 ];
 
-sortArtists(testData);
+//sortArtists(testData);
