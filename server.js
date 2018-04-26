@@ -38,13 +38,7 @@ const testsubStreamOpts = {
     pollTime: 5000
 };
 
-const comments = client.CommentStream(streamOpts);
-
 const submissions = client.SubmissionStream(subStreamOpts);
-
-comments.on('comment', (comment)=>{
-    console.log(comment);
-});
 
 submissions.on('submission', (submission)=>{
     console.log(submission);
