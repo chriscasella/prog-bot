@@ -53,6 +53,7 @@ let commentPayload = [];
 let counter = 0;
 let currentSubmission = null;
 
+//1. On post, regexp on title
 let isSong = (submission) => {
     let title = submission.title;
     const pattern = new RegExp(/\s*-\s*/);
@@ -60,7 +61,7 @@ let isSong = (submission) => {
     //let split = title.split(' ');
     //split[1] == '-' ? searchSimilarArtists(split[0]) : ''//nothing   
 };
-
+//2. Looks for hyphen then pushes everything before it to search for similar artists
 let parseTitle = (title) => {
     let split = title.split(' ');
     let titleArr = [];
@@ -73,8 +74,10 @@ let parseTitle = (title) => {
         };
     };
 };
-
+//3. Does http call to Last.fm for similar artists
 let searchSimilarArtists = (artist) => {
+
+    
     axios.get('http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist='+ artist +'&api_key='+ lastApi +'&format=json&limit=3')
     .then((res)=>{
         console.log(res);
@@ -83,58 +86,51 @@ let searchSimilarArtists = (artist) => {
         console.log('last fm search error:', err);
     });
 };
-
+//4. sorts through last.fm object and pushes artists names to savedArtists
 let sortArtists = (artists) => {
     savedArtists = [];
+
     for(artist of artists){
         savedArtists.push(artist.name);
         console.log(artist)
     };
+
     console.log('savedArtists:', savedArtists);
     searchYouTube(savedArtists);
 };
-
+//5. 
 let searchYouTube = (artists) => {
     const ytOpts = {
         maxResults: 1,
         key: process.env.YOUTUBE_API
     };
 
-    async function asyncForEach(array, callback) {
-        for (let index = 0; index < array.length; index++) {
-            await callback(array[index], index, array)
-        }
-    };
-
-    const execSavedArtistSearch = async () => {
-        await asyncForEach(savedArtists, async (artist) => {
-            await youtubeSearch(artist + ' band', ytOpts, (err, res) => {
-                if (err) console.log(err);
-                console.log(res[0]);
-                parseYtResponse(res[0]);
-            });
-        })
-        console.log('Done')
-    }
-    execSavedArtistSearch();
-    /*
-    async.each(artists, (artist)=>{
-        
-        youtubeSearch(artist + ' band', ytOpts, (err, res) => {
+    let prom1 = youtubeSearch(artists[0] + ' band', ytOpts, (err, res) => {
             if (err) console.log(err);
-            console.log(res[0]);
-            parseYtResponse(res[0]);
+            console.log('------------------------');
+            console.log('promise made', res[0]);
+        parseYtResponse(res[0], artists[0]);
         });
-    },(err)=>{
-        if(err) console.log('error in eachOfSeries:', err);
+    let prom2 = youtubeSearch(artists[1] + ' band', ytOpts, (err, res) => {
+        if (err) console.log(err);
+        console.log('------------------------');
+        console.log('promise made', res[0]);
+        parseYtResponse(res[0], artists[1]);
     });
-    */
+    let prom3 = youtubeSearch(artists[2] + ' band', ytOpts, (err, res) => {
+        if (err) console.log(err);
+        console.log('------------------------');
+        console.log('promise made', res[0]);
+        parseYtResponse(res[0], artists[2]);
+    });
+
+    const promArr = [prom1,prom2,prom3];
 };
 
-let parseYtResponse =(ytObj)=>{
+let parseYtResponse =(ytObj, artist)=>{
     let ytVidObj = {
         link:ytObj.link,
-        artist: savedArtists[counter]
+        artist: artist
     };
     commentPayload.push(ytVidObj); 
     counter++;
@@ -172,4 +168,4 @@ const testData = [
     }
 ];
 
-//sortArtists(testData);
+//searchSimilarArtists('Opeth');
