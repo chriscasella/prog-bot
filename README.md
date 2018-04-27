@@ -3,12 +3,12 @@
 <h4 >Far too often do people ask for suggestions for similar bands on a song posting. This bot approaches that issue by monitoring the r/progmetal submission stream and scanning each post title. If it is in the format of 'Artist - Song' then it will perform and API calls to Last.fm and YouTube and respond with a comment of links to the top 3 similar artists to that post titled with the bands names</h4>
 <h4 >As a metal head/ musician/ programmer, I encourage you to spread the knowledge and love for music. Thanks for checking it out!</h4>
 <br>
-<legend>
-    <p> To check out some previous posts, take a look at the user page for <bold><a href="https://www.reddit.com/user/prog-bot/">u/prog-bot</a></bold></p>
-</legend>
-<section>
-    <p> Or check out <a href="https://www.reddit.com/r/progmetal/">r/progmetal</a> and find a song post!</p>
-</section>
+
+<h3> To check out some previous posts, take a look at the user page for <bold><a href="https://www.reddit.com/user/prog-bot/">u/prog-bot</a></bold></h3>
+
+
+<h4> Or check out <a href="https://www.reddit.com/r/progmetal/">r/progmetal</a> and find a song post!</h4>
+
 <br>
 <p align="center">
     <img src="/example1.png"/>
