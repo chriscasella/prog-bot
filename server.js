@@ -105,8 +105,6 @@ let searchYouTube = (artists) => {
         key: process.env.YOUTUBE_API
     };
 
-   
-        console.log('===========================artist================', artist)
     let prom1 = youtubeSearch(artists[0] + ' band', ytOpts, (err, res) => {
             if (err) console.log(err);
             console.log('------------------------');
@@ -127,18 +125,6 @@ let searchYouTube = (artists) => {
     });
 
     const promArr = [prom1,prom2,prom3];
-    /*
-    async.each(artists, (artist)=>{
-        
-        youtubeSearch(artist + ' band', ytOpts, (err, res) => {
-            if (err) console.log(err);
-            console.log(res[0]);
-            parseYtResponse(res[0]);
-        });
-    },(err)=>{
-        if(err) console.log('error in eachOfSeries:', err);
-    });
-    */
 };
 
 let parseYtResponse =(ytObj, artist)=>{
