@@ -5,7 +5,7 @@
 <h4>As a metal head/ musician/ programmer, I encourage you to spread the knowledge and love for music. Thanks for checking it out!</h4>
 <br>
 <br>
-![alt text](https://imgur.com/ciHlnB7)
+[alt text](https://imgur.com/ciHlnB7)
 Made with Node.js 
 <h4>Dependencies</h4>
 <ul>
