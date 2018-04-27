@@ -8,7 +8,10 @@
 <p align="center">
     <img src="/example1.png" width="350" />
 </p>
-<div align="center">
+<div style="margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;">
     <h3>Made with Node.js</h3>
     <h4>Dependencies</h4>
     <ul>
