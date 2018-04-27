@@ -6,12 +6,9 @@
 <br>
 <br>
 <p align="center">
-    <img src="/example1.png" width="350" />
+    <img src="/example1.png"/>
 </p>
-<div style="margin: auto;
-    width: 50%;
-    border: 3px solid green;
-    padding: 10px;">
+<div style="margin: auto">
     <h3>Made with Node.js</h3>
     <h4>Dependencies</h4>
     <ul>
