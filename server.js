@@ -4,10 +4,11 @@ const Snoowrap = require('snoowrap');
 const Snoostorm = require('snoostorm');
 const axios = require('axios');
 const youtubeSearch = require('youtube-search');
+const async = require('async');
 
 //environment variables
-const lastApi = process.env.LAST_API;
 const lastSecret = process.env.LAST_SECRET;
+const lastApi = process.env.LAST_API;
 
 
 const r = new Snoowrap({
@@ -98,13 +99,36 @@ let searchYouTube = (artists) => {
         maxResults: 1,
         key: process.env.YOUTUBE_API
     };
-    for(i of artists){
-        youtubeSearch(i + ' band', ytOpts, (err, res)=>{
-            if(err) console.log(err);
-            console.log(res[0]); 
+
+    async function asyncForEach(array, callback) {
+        for (let index = 0; index < array.length; index++) {
+            await callback(array[index], index, array)
+        }
+    };
+
+    const execSavedArtistSearch = async () => {
+        await asyncForEach(savedArtists, async (artist) => {
+            await youtubeSearch(artist + ' band', ytOpts, (err, res) => {
+                if (err) console.log(err);
+                console.log(res[0]);
+                parseYtResponse(res[0]);
+            });
+        })
+        console.log('Done')
+    }
+    execSavedArtistSearch();
+    /*
+    async.each(artists, (artist)=>{
+        
+        youtubeSearch(artist + ' band', ytOpts, (err, res) => {
+            if (err) console.log(err);
+            console.log(res[0]);
             parseYtResponse(res[0]);
         });
-    };
+    },(err)=>{
+        if(err) console.log('error in eachOfSeries:', err);
+    });
+    */
 };
 
 let parseYtResponse =(ytObj)=>{
@@ -119,7 +143,12 @@ let parseYtResponse =(ytObj)=>{
 
 let postComment = () =>{
     console.log('commentPayload',commentPayload,'savedArtists', savedArtists);
-    let commentText = '**Here are some similar artists for this submission** \n\n &nbsp; [' + commentPayload[0].artist + '](' + commentPayload[0].link + ') \n\n &nbsp; [' + commentPayload[1].artist + '](' + commentPayload[1].link + ') \n\n &nbsp; [' + commentPayload[2].artist + '](' + commentPayload[2].link +')  \n\n &nbsp; *I am a bot, sent here to spread prog metal* d(>_<)b' ;
+    let commentText = '**Here are some similar artists for this submission**' +
+    '\n\n &nbsp; [' + commentPayload[0].artist + '](' + commentPayload[0].link + ')' +
+    '\n\n &nbsp; [' + commentPayload[1].artist + '](' + commentPayload[1].link + ')' +
+    '\n\n &nbsp; [' + commentPayload[2].artist + '](' + commentPayload[2].link +')' +
+    '\n\n &nbsp; *I am a bot, sent here to spread prog metal* d(>_<)b' ;
+    
     currentSubmission.reply(commentText);
     wipeVars();
 };

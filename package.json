@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/chriscasella/prog-bot#readme",
   "dependencies": {
+    "async": "^2.6.0",
     "axios": "^0.18.0",
     "dotenv": "^5.0.1",
     "snoostorm": "0.0.5",
