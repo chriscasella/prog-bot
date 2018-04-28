@@ -4,11 +4,11 @@
 <h4 >As a metal head/ musician/ programmer, I encourage you to spread the knowledge and love for music. Thanks for checking it out!</h4>
 <br>
 
-<h3> To check out some previous posts, take a look at the user page for <bold><a href="https://www.reddit.com/user/prog-bot/">u/prog-bot</a></bold></h3>
+<h3 align="center"> To check out some previous posts, take a look at the user page for <bold><a href="https://www.reddit.com/user/prog-bot/">u/prog-bot</a></bold></h3>
 
 
-<h4> Or check out <a href="https://www.reddit.com/r/progmetal/">r/progmetal</a> and find a song post!</h4>
-<h5>Check the status of the app on <a src='https://prog-bot.herokuapp.com/'>prog-bot.herokuapp.com</a></h5>
+<h4 align="center"> Or check out <a href="https://www.reddit.com/r/progmetal/">r/progmetal</a> and find a song post!</h4>
+<h5 align="center">Check the status of the app on <a href='https://prog-bot.herokuapp.com/'>prog-bot.herokuapp.com</a></h5>
 
 <br>
 <p align="center">
