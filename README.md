@@ -1,6 +1,5 @@
 <h1 align="center"><a href="https://www.reddit.com/r/progmetal/">r/progmetal</a> prog-bot</h1>
 <img src=https://heroku-badge.herokuapp.com/?app=prog-bot>
-<img src=http://inch-ci.org/github/chriscasella/prog-bot>
 
 <h4 >This is a Reddit bot for the subreddit r/progmetal. As an avid lover of progressive metal, and all types of progressive music, I used this bot to solve an issue within the community. </h4>
 <h4 >Far too often do people ask for suggestions for similar bands on a song posting. This bot approaches that issue by monitoring the r/progmetal submission stream and scanning each post title. If it is in the format of 'Artist - Song' then it will execute API calls to Last.fm and YouTube. <bold>prog-bot</bold> will respond with a comment of links to three similar artists youtube channel/videos</h4>
