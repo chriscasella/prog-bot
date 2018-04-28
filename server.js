@@ -1,15 +1,18 @@
 require('dotenv').config();
 
+const express = require('express');
 const Snoowrap = require('snoowrap');
 const Snoostorm = require('snoostorm');
 const axios = require('axios');
 const youtubeSearch = require('youtube-search');
 const async = require('async');
+const app = express();
 
 //environment variables
 const lastSecret = process.env.LAST_SECRET;
 const lastApi = process.env.LAST_API;
 
+app.listen(process.env.PORT || 5000);
 
 const r = new Snoowrap({
     userAgent: 'prog-bot',
