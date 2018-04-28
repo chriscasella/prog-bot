@@ -1,15 +1,26 @@
 require('dotenv').config();
 
+const express = require('express');
 const Snoowrap = require('snoowrap');
 const Snoostorm = require('snoostorm');
 const axios = require('axios');
 const youtubeSearch = require('youtube-search');
 const async = require('async');
+const app = express();
 
 //environment variables
 const lastSecret = process.env.LAST_SECRET;
 const lastApi = process.env.LAST_API;
 
+app.set('port', (process.env.PORT || 5000));
+
+//For avoidong Heroku $PORT error
+app.get('/', function (request, response) {
+    var result = 'App is running'
+    response.send(result);
+}).listen(app.get('port'), function () {
+    console.log('App is running, server is listening on port ', app.get('port'));
+});
 
 const r = new Snoowrap({
     userAgent: 'prog-bot',
