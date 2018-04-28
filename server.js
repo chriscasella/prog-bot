@@ -12,7 +12,7 @@ const app = express();
 const lastSecret = process.env.LAST_SECRET;
 const lastApi = process.env.LAST_API;
 
-app.listen(process.env.PORT || 5000);
+app.listen(process.env.PORT || 5000, ()=>{console.log('listening to port 5000')});
 
 const r = new Snoowrap({
     userAgent: 'prog-bot',
