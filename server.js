@@ -51,7 +51,6 @@ const testsubStreamOpts = {
 };
 
 const submissions = client.SubmissionStream(subStreamOpts);
-
 submissions.on('submission', (submission)=>{
     console.log(submission);
     currentSubmission = submission;
@@ -67,10 +66,10 @@ let currentSubmission = null;
 //1. On post, regexp on title
 let isSong = (submission) => {
     let title = submission.title;
-    const pattern = new RegExp(/\s*-\s*/);
-    title.match(pattern) ? parseTitle(title) : ''
-    //let split = title.split(' ');
-    //split[1] == '-' ? searchSimilarArtists(split[0]) : ''//nothing   
+const pattern = new RegExp(/\s*-\s*/);
+title.match(pattern) ? parseTitle(title) : ''
+//let split = title.split(' ');
+//split[1] == '-' ? searchSimilarArtists(split[0]) : ''//nothing   
 };
 //2. Looks for hyphen then pushes everything before it to search for similar artists
 let parseTitle = (title) => {
@@ -87,7 +86,7 @@ let parseTitle = (title) => {
 };
 //3. Does http call to Last.fm for similar artists
 let searchSimilarArtists = (artist) => {
-
+    
     
     axios.get('http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist='+ artist +'&api_key='+ lastApi +'&format=json&limit=3')
     .then((res)=>{
@@ -100,12 +99,12 @@ let searchSimilarArtists = (artist) => {
 //4. sorts through last.fm object and pushes artists names to savedArtists
 let sortArtists = (artists) => {
     savedArtists = [];
-
+    
     for(artist of artists){
         savedArtists.push(artist.name);
         console.log(artist)
     };
-
+    
     console.log('savedArtists:', savedArtists);
     searchYouTube(savedArtists);
 };
@@ -115,13 +114,13 @@ let searchYouTube = (artists) => {
         maxResults: 1,
         key: process.env.YOUTUBE_API
     };
-
+    
     let prom1 = youtubeSearch(artists[0] + ' band', ytOpts, (err, res) => {
-            if (err) console.log(err);
-            console.log('------------------------');
-            console.log('promise made', res[0]);
+        if (err) console.log(err);
+        console.log('------------------------');
+        console.log('promise made', res[0]);
         parseYtResponse(res[0], artists[0]);
-        });
+    });
     let prom2 = youtubeSearch(artists[1] + ' band', ytOpts, (err, res) => {
         if (err) console.log(err);
         console.log('------------------------');
@@ -134,7 +133,7 @@ let searchYouTube = (artists) => {
         console.log('promise made', res[0]);
         parseYtResponse(res[0], artists[2]);
     });
-
+    
     const promArr = [prom1,prom2,prom3];
 };
 
@@ -179,4 +178,5 @@ const testData = [
     }
 ];
 
-//searchSimilarArtists('Opeth');
+
+searchSimilarArtists('Opeth');
