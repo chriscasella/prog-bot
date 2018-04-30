@@ -41,7 +41,7 @@ const streamOpts = {
 const subStreamOpts = {
     subreddit: 'progmetal',
     results: 1,
-    pollTime: 5000
+    pollTime: 30000
 };
 
 const testsubStreamOpts = {
